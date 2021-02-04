@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="create-table-user-authenticate" author="cuong tran">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_authenticate"></tableExists>
+            </not>
+        </preConditions>
+
+        <comment>
+            Create table user authenticate
+        </comment>
+
+        <createTable tableName="user_authenticate">
+            <column name="user_authenticate_id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="user_authenticate" columnNames="username, password"/>
+    </changeSet>
+
+    <!--    <changeSet id="create-table-user-activities" author="cuong tran">-->
+    <!--        <preConditions>-->
+    <!--            <not>-->
+    <!--                <tableExists tableName="user_activities"/>-->
+    <!--            </not>-->
+    <!--        </preConditions>-->
+
+    <!--        <comment>-->
+    <!--            Create table user activities-->
+    <!--        </comment>-->
+
+    <!--        <createTable tableName="user_activities">-->
+    <!--            <column name="user_activities_id" type="int" autoIncrement="true">-->
+    <!--                <constraints nullable="false" primaryKey="true"/>-->
+    <!--            </column>-->
+    <!--            <column name=""-->
+    <!--        </createTable>-->
+    <!--    </changeSet>-->
+
+    <!--    <changeSet id="create-table-about-me" author="cuong tran">-->
+    <!--        <preConditions>-->
+    <!--            <not>-->
+    <!--                <tableExists tableName="about_me"></tableExists>-->
+    <!--            </not>-->
+    <!--        </preConditions>-->
+    <!--        -->
+    <!--        <comment>-->
+    <!--            Create table about me-->
+    <!--        </comment>-->
+    <!--        -->
+    <!--        <createTable tableName="about_me">-->
+    <!--            <column name="about_me_id" type="int" autoIncrement="true">-->
+    <!--                <constraints nullable="false" primaryKey="true"/> -->
+    <!--            </column>-->
+    <!--            <column name="username" type="varchar(50)">-->
+    <!--                <constraints nullable="false" />-->
+    <!--            </column>-->
+    <!--            -->
+    <!--        </createTable>-->
+    <!--    </changeSet>-->
+
+    <!--    <changeSet author="cuong tran" id="create-table-user-profile">-->
+    <!--        <preConditions onFail="MARK_RAN">-->
+    <!--            <not>-->
+    <!--                <tableExists tableName="user_profiles"></tableExists>-->
+    <!--            </not>-->
+    <!--        </preConditions>-->
+
+    <!--        <comment>-->
+    <!--            Create table user profile-->
+    <!--        </comment>-->
+
+    <!--        <createTable tableName="user_profiles">-->
+    <!--            <column name="user_id" type="int" autoIncrement="true">-->
+    <!--                <constraints nullable="false" primaryKey="true"/>-->
+    <!--            </column>-->
+    <!--            <column name="user_authenticate" type="int">-->
+    <!--                <constraints nullable="false" unique="true" uniqueConstraintName="USER_AUTHENTICATE_UNIQUE"/>-->
+    <!--            </column>-->
+    <!--            <column name="about_me" type="int">-->
+    <!--                <constraints nullable="false" unique="true" uniqueConstraintName="ABOUT_ME_UNIQUE"/>-->
+    <!--            </column>-->
+    <!--            <column name="job" type="int">-->
+    <!--                <constraints nullable="false" unique="true" uniqueConstraintName="JOB_UNIQUE"/>-->
+    <!--            </column>-->
+    <!--            <column name="workspace" type="int">-->
+    <!--                <constraints nullable="false" unique="true" uniqueConstraintName="WORKSPACE_UNIQUE"/>-->
+    <!--            </column>-->
+    <!--            <column name="address" type="int">-->
+    <!--                <constraints nullable="false" unique="true" uniqueConstraintName="LOCATION_UNIQUE"/>-->
+    <!--            </column>-->
+    <!--            <column name="web_profile" type="int">-->
+    <!--                <constraints nullable="false" unique="true" uniqueConstraintName="WEB_PROFILE_UNIQUE"/>-->
+    <!--            </column>-->
+    <!--            <column name="Activities" type="int">-->
+    <!--                <constraints nullable="false" unique="true" uniqueConstraintName="ACTIVITIES_UNIQUE"/>-->
+    <!--            </column>-->
+    <!--            <column name="date_created" type="DATETIME">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--        </createTable>-->
+    <!--        <rollback/>-->
+    <!--    </changeSet>-->
+
+</databaseChangeLog>
+
